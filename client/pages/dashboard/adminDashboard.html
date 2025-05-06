@@ -1,1 +1,57 @@
-// see from deployed web and create the admin dashboard
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>Admin Panel</h2>
+        <nav>
+          <ul>
+            <li class="active">Dashboard</li>
+            <li>Police Stations</li>
+            <li>Police Officers</li>
+            <li>Reports</li>
+          </ul>
+        </nav>
+        <a href="#" class="logout">Logout</a>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <span class="email">admin@crms.gov</span>
+          <img
+            src="https://i.pravatar.cc/40"
+            alt="Profile"
+            class="profile-img"
+          />
+        </header>
+
+        <h1 class="title">Dashboard</h1>
+
+        <div class="cards">
+          <div class="card blue">
+            <p>Total Officers</p>
+            <h2>2</h2>
+          </div>
+          <div class="card green">
+            <p>Police Stations</p>
+            <h2>3</h2>
+          </div>
+          <div class="card purple">
+            <p>Completed FIRs</p>
+            <h2>2</h2>
+          </div>
+          <div class="card yellow">
+            <p>Active Cases</p>
+            <h2>24</h2>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
