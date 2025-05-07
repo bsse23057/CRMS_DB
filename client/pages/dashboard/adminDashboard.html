@@ -4,54 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./admin.css" />
   </head>
   <body>
-    <div class="container">
-      <aside class="sidebar">
-        <h2>Admin Panel</h2>
-        <nav>
+    <div id="dashboard">
+      <div id="sideBar">
+        <div id="upperBar">
+          <h2>Admin Panel</h2>
           <ul>
-            <li class="active">Dashboard</li>
-            <li>Police Stations</li>
-            <li>Police Officers</li>
-            <li>Reports</li>
+            <li class="active">
+              <i class="ri-dashboard-fill"></i><a href="#">Dashboard</a>
+            </li>
+            <li>
+              <i class="ri-police-badge-line"></i
+              ><a href="#">Police Stations</a>
+            </li>
+            <li>
+              <i class="ri-shield-star-line"></i><a href="#">Police Officers</a>
+            </li>
+            <li><i class="ri-folder-chart-line"></i><a href="#">Reports</a></li>
           </ul>
-        </nav>
-        <a href="#" class="logout">Logout</a>
-      </aside>
-
-      <main class="main-content">
-        <header class="topbar">
-          <span class="email">admin@crms.gov</span>
-          <img
-            src="https://i.pravatar.cc/40"
-            alt="Profile"
-            class="profile-img"
-          />
-        </header>
-
-        <h1 class="title">Dashboard</h1>
-
-        <div class="cards">
-          <div class="card blue">
-            <p>Total Officers</p>
-            <h2>2</h2>
+        </div>
+      </div>
+      <div id="topBar">
+        <h3>Dashboard</h3>
+        <h4><i class="ri-admin-line"></i>admin@gmail.com</h4>
+      </div>
+      <div id="main-content">
+        <div id="cards">
+          <div class="card">
+            <i class="ri-team-line" id="cops"></i>
+            <h4>Total Officers</h4>
+            <p>10</p>
           </div>
-          <div class="card green">
-            <p>Police Stations</p>
-            <h2>3</h2>
+          <div class="card">
+            <i class="ri-police-badge-line" id="station"></i>
+            <h4>Police Stations</h4>
+            <p>10</p>
           </div>
-          <div class="card purple">
-            <p>Completed FIRs</p>
-            <h2>2</h2>
+          <div class="card">
+            <i class="ri-folder-chart-line" id="Completed"></i>
+            <h4>Completed FIR's</h4>
+            <p>10</p>
           </div>
-          <div class="card yellow">
-            <p>Active Cases</p>
-            <h2>24</h2>
+          <div class="card">
+            <i class="ri-file-chart-line" id="activeCases"></i>
+            <h4>Active Cases</h4>
+            <p>10</p>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </body>
 </html>
