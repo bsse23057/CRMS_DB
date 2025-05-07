@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
+    <title>Police Stations</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -18,7 +18,7 @@
           <ul>
             <li class="active">
               <i class="ri-dashboard-fill"></i
-              ><a href="#dashboard">Dashboard</a>
+              ><a href="./adminDashboard.html">Dashboard</a>
             </li>
             <li>
               <i class="ri-police-badge-line"></i
@@ -36,31 +36,35 @@
         </div>
       </div>
       <div id="topBar">
-        <h3>Dashboard</h3>
+        <h3>Stations</h3>
         <h4><i class="ri-admin-line"></i>admin@gmail.com</h4>
       </div>
       <div id="main-content">
-        <div id="cards">
-          <div class="card">
-            <i class="ri-team-line" id="cops"></i>
-            <h4>Total Officers</h4>
-            <p>10</p>
-          </div>
-          <div class="card">
-            <i class="ri-police-badge-line" id="station"></i>
-            <h4>Police Stations</h4>
-            <p>10</p>
-          </div>
-          <div class="card">
-            <i class="ri-folder-chart-line" id="Completed"></i>
-            <h4>Completed FIR's</h4>
-            <p>10</p>
-          </div>
-          <div class="card">
-            <i class="ri-file-chart-line" id="activeCases"></i>
-            <h4>Active Cases</h4>
-            <p>10</p>
-          </div>
+        <div id="upperPart">
+          <h4>Police Stations</h4>
+          <button><i class="ri-add-line"></i>Add Stations</button>
+        </div>
+        <div class="lower-content">
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>LOCATION</th>
+              <th>OFFICERS</th>
+            </tr>
+            <tr>
+              <td>PS001</td>
+              <td>Central Lahore Police Station</td>
+              <td>Lahore</td>
+              <td>45</td>
+            </tr>
+            <tr>
+              <td>PS001</td>
+              <td>Central Karachi Police Station</td>
+              <td>Karachi</td>
+              <td>45</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

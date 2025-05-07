@@ -65,6 +65,7 @@ ul i {
   position: absolute;
   top: 100px;
   left: 300px;
+  width: 100%;
 }
 #cards {
   display: flex;
@@ -96,4 +97,51 @@ ul i {
 }
 #cops {
   color: rgb(89, 89, 192);
+}
+#upperPart {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+#ReportUpper {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+#upperPart button {
+  height: 40px;
+  width: 150px;
+  background-color: rgb(70, 70, 217);
+  border: none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+}
+#upperPart button:hover {
+  background-color: rgb(70, 70, 250);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.093);
+  border-radius: 20px;
+}
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+th {
+  font-weight: 600;
+  color: #666;
+}
+td a {
+  text-decoration: none;
+}
+#status {
+  color: rgb(52, 177, 52);
 }
