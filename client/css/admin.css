@@ -69,7 +69,6 @@ ul i {
 }
 #cards {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   gap: 30px;
   padding: 20px;
