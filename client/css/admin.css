@@ -5,6 +5,7 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
 #dashboard {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -119,7 +120,7 @@ ul i {
   background-color: rgb(70, 70, 250);
 }
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.093);
   border-radius: 20px;
@@ -143,4 +144,74 @@ td a {
 }
 #status {
   color: rgb(52, 177, 52);
+}
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 400px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-body input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-footer button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  background-color: #eee;
+}
+
+#save-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.close-btn {
+  font-size: 20px;
+  cursor: pointer;
 }

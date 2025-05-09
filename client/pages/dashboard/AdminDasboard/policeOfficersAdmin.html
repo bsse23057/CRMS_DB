@@ -3,12 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Police Stations</title>
+    <title>Police Officers</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/client/css/admin.css" />
+    <style>
+      /* Modal Styling */
+      .modal.hidden {
+        display: none;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .modal-content {
+        background-color: #fff;
+        width: 400px;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-header h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+      .close-btn {
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+      .modal-body {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .modal-body label {
+        font-weight: 500;
+      }
+      .modal-body input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .modal-footer button {
+        padding: 10px 16px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      #cancel-btn {
+        background-color: #f3f4f6;
+      }
+      #add-officer-btn {
+        background-color: #2563eb;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <div id="dashboard">
@@ -16,7 +91,7 @@
         <div id="upperBar">
           <h2>Admin Panel</h2>
           <ul>
-            <li class="active">
+            <li>
               <i class="ri-dashboard-fill"></i
               ><a href="./adminDashboard.html">Dashboard</a>
             </li>
@@ -24,7 +99,7 @@
               <i class="ri-police-badge-line"></i
               ><a href="./policeStationAdmin.html">Police Stations</a>
             </li>
-            <li>
+            <li class="active">
               <i class="ri-shield-star-line"></i
               ><a href="./policeOfficersAdmin.html">Police Officers</a>
             </li>
@@ -42,10 +117,12 @@
       <div id="main-content">
         <div id="upperPart">
           <h4>Police Officers</h4>
-          <button><i class="ri-add-line"></i>Add Officers</button>
+          <button id="openModal">
+            <i class="ri-add-line"></i>Add Officers
+          </button>
         </div>
         <div class="lower-content">
-          <table>
+          <table id="officersTable">
             <tr>
               <th>ID</th>
               <th>NAME</th>
@@ -58,11 +135,90 @@
               <td>Adil Shahzad</td>
               <td>Model Town Thana</td>
               <td id="status">Active</td>
-              <td><a href="">Assign Station</a></td>
+              <td><a href="#">Assign Station</a></td>
             </tr>
           </table>
         </div>
       </div>
     </div>
+
+    <!-- Modal HTML -->
+    <div id="officerModal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add Police Officer</h2>
+          <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="Enter full name" />
+
+          <label for="badgeNumber">Badge Number</label>
+          <input
+            type="text"
+            id="badgeNumber"
+            placeholder="Enter badge number"
+          />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email" />
+
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            placeholder="Enter phone number"
+          />
+        </div>
+        <div class="modal-footer">
+          <button id="cancel-btn">Cancel</button>
+          <button id="add-officer-btn">Add Officer</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const openBtn = document.getElementById("openModal");
+      const modal = document.getElementById("officerModal");
+      const closeBtn = document.getElementById("closeModal");
+      const cancelBtn = document.getElementById("cancel-btn");
+      const addOfficerBtn = document.getElementById("add-officer-btn");
+      const table = document.getElementById("officersTable");
+
+      let officerID = 1; // starting from 1 after the first static row
+
+      openBtn.addEventListener("click", () => modal.classList.remove("hidden"));
+      closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
+      cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+
+      addOfficerBtn.addEventListener("click", () => {
+        const fullName = document.getElementById("fullName").value.trim();
+        const badge = document.getElementById("badgeNumber").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phoneNumber").value.trim();
+
+        if (!fullName || !badge || !email || !phone) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        const newRow = table.insertRow(-1);
+        newRow.innerHTML = `
+          <td>${officerID++}</td>
+          <td>${fullName}</td>
+          <td>Not Assigned</td>
+          <td id="status">Active</td>
+          <td><a href="#">Assign Station</a></td>
+        `;
+
+        // Clear form
+        document.getElementById("fullName").value = "";
+        document.getElementById("badgeNumber").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phoneNumber").value = "";
+
+        modal.classList.add("hidden");
+      });
+    </script>
   </body>
 </html>
