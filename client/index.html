@@ -1,3 +1,97 @@
-// create landing page just like when we open that link
-// static data 
-// with three button usersign police and admin
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRMS | Crime Record Management</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1f2937, #111827);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      background: #1e293b;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #f9fafb;
+    }
+
+    p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-group a {
+      text-decoration: none;
+      background: #3b82f6;
+      color: white;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-group a:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .btn-group a {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Crime Record Management</h1>
+    <p>Select your role to login into the system</p>
+
+    <div class="btn-group">
+      <a href="./pages/login-pages/userLoginPage.html">🔐 User Login</a>
+      <a href="./pages/login-pages/policeLoginPage.html">👮 Police Login</a>
+      <a href="./pages/login-pages/adminLoginPage.html">🛡️ Admin Login</a>
+    </div>
+  </div>
+</body>
+</html>
