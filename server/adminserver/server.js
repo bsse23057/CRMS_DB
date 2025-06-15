@@ -12,10 +12,10 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ Correct path from server/adminserver/server.js to client/
+//  Correct path from server/adminserver/server.js to client/
 const clientPath = path.join(__dirname, "..", "..", "client");
 
-// ✅ DEBUG print to confirm resolved path
+//  DEBUG print to confirm resolved path
 console.log("Client base path:", clientPath);
 
 // Static files
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(clientPath, "index.html"));
 });
 
-// ✅ Serve Admin Dashboard Page
+//  Serve Admin Dashboard Page
 app.get("/admin/police-officers", (req, res) => {
   const filePath = path.join(
     clientPath,
@@ -38,7 +38,7 @@ app.get("/admin/police-officers", (req, res) => {
     "policeOfficersAdmin.html"
   );
 
-  console.log("Serving file from:", filePath); // 💡 Useful to debug
+  console.log("Serving file from:", filePath); //  Useful to debug
 
   res.sendFile(filePath);
 });
@@ -85,7 +85,7 @@ app.post("/api/officers", async (req, res) => {
   }
 });
 
-// ✅ Serve Police Station Admin Page
+//  Serve Police Station Admin Page
 app.get("/admin/police-stations", (req, res) => {
   const filePath = path.join(
     clientPath,
@@ -135,7 +135,7 @@ app.post("/api/stations", async (req, res) => {
   }
 });
 
-// ✅ Serve Reports Admin Page
+// Serve Reports Admin Page
 app.get("/admin/reports", (req, res) => {
   const filePath = path.join(
     clientPath,
@@ -148,29 +148,44 @@ app.get("/admin/reports", (req, res) => {
   res.sendFile(filePath);
 });
 
-// API: Get all reports
+app.get("/reports", (req, res) => {
+  res.sendFile(
+    path.join(
+      clientPath,
+      "pages",
+      "dashboard",
+      "AdminDashboard",
+      "reportsAdmin.html"
+    )
+  );
+});
+
+// API: Get all reports (simplified)
 app.get("/api/reports", async (req, res) => {
   try {
     const result = await db.query(`
       SELECT 
-        r.id AS fir_id,
-        o.full_name AS officer,
-        s.name AS station,
-        r.date AS report_date,
-        r.section
-      FROM report r
-      JOIN police_officer o ON r.officer_id = o.id
-      JOIN police_station s ON o.station_id = s.id
-      ORDER BY r.date DESC;
+        report_id,
+        full_name,
+        incident_date,
+        incident_location,
+        crime_type,
+        station_code,
+        description
+      FROM report
+      ORDER BY incident_date DESC
     `);
 
     res.json(result.rows);
   } catch (error) {
     console.error("Error fetching reports:", error);
-    res.status(500).json({ error: "Failed to fetch reports" });
+    res.status(500).json({
+      error: "Failed to fetch reports",
+      details: error.message,
+    });
   }
 });
 
 app.listen(port, () => {
-  console.log(`✅ Server running at http://localhost:${port}`);
+  console.log(` Server running at http://localhost:${port}`);
 });
